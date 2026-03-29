@@ -1,0 +1,24 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/post-edit.sh",
+            "timeout": 60,
+            "statusMessage": "Running tests & lint..."
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/security-check.sh",
+            "timeout": 30,
+            "statusMessage": "Running security checks...",
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}

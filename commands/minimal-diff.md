@@ -1,0 +1,1 @@
+../skills/minimal-diff.md
