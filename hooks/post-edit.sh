@@ -44,7 +44,7 @@ fi
 
 if [ -n "$TEST_CMD" ]; then
   echo "Running tests: $TEST_CMD"
-  $TEST_CMD 2>&1 | ./hooks/filter-test-output.sh
+  $TEST_CMD 2>&1 | "$(dirname "$0")/filter-test-output.sh"
 fi
 
 # ----------------------
