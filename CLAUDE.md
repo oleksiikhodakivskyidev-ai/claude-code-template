@@ -33,6 +33,13 @@
 - Prefer efficient data structures
 - Avoid blocking operations in async/concurrent code
 
+## Diff Control (CRITICAL)
+- Apply minimal diffs only
+- Do not rewrite entire files if partial change is possible
+- Do not modify unrelated code
+- Do not refactor unless explicitly required
+- Do not change formatting outside modified lines
+
 ## Implementation Strategy
 - Modify only necessary files
 - Avoid large refactors
@@ -51,6 +58,12 @@
 - Ensure lint passes
 - Ensure typecheck passes
 - Fix failures automatically
+
+## Security (CRITICAL)
+- Do not introduce hardcoded secrets
+- Validate and sanitize all external input
+- Avoid unsafe dynamic execution (eval, shell, SQL string concat)
+- Enforce proper authentication and authorization checks
 
 ## Constraints
 - Assume user is senior engineer
