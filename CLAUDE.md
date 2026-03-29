@@ -26,6 +26,13 @@
 - No TODOs
 - No incomplete implementations
 
+## Performance (CRITICAL)
+- Avoid O(n^2) or worse complexity unless required
+- Avoid repeated I/O (DB/API) inside loops
+- Avoid unnecessary memory allocations or large copies
+- Prefer efficient data structures
+- Avoid blocking operations in async/concurrent code
+
 ## Implementation Strategy
 - Modify only necessary files
 - Avoid large refactors
@@ -38,8 +45,9 @@
 - Avoid redundant output
 - Prefer minimal diffs over full rewrites
 
-## Testing & Validation
-- Ensure all tests pass
+## Testing & Validation (CRITICAL)
+- Ensure all tests pass before finishing
+- If tests fail, fix them
 - Ensure lint passes
 - Ensure typecheck passes
 - Fix failures automatically
