@@ -1,71 +1,40 @@
-# Project Rules
+# Global Rules
 
-## Output (CRITICAL)
-- Output ONLY code changes
-- No explanations
-- No summaries
-- No justifications
-- No commentary
-- No markdown outside code
-- No comments inside code unless explicitly requested
-- No example usage unless explicitly requested
-- No documentation files unless explicitly requested
-- If no changes are required → output nothing
+User is a senior engineer. Be direct. Skip preamble and recaps. Explain only what's necessary to act on or verify.
 
-## Behavior (CRITICAL)
-- Follow instructions exactly
-- Do not infer additional requirements
-- Do not expand scope
-- Prefer smallest valid solution
-- Prefer simple implementations unless requirements clearly demand complexity
+## Rule Priority
+Security > Correctness (compile/tests) > Scope > Performance > Simplicity > Style
 
-## Code Quality (IMPORTANT)
-- Code must compile
-- Code must pass tests
-- Code must pass lint and type checks
-- No TODOs
-- No incomplete implementations
+## Scope
+- Do exactly what was asked, nothing more
+- Smallest correct change; minimal diffs; no unrelated edits or drive-by refactors
+- Do not introduce behavior changes outside the requested scope
+- Reuse existing code and follow existing patterns
+- No TODOs, no stubs, no dead code
+- If requirements, intent, trade-offs, or constraints are unclear, inconsistent, or impossible — stop and ask
 
-## Performance (CRITICAL)
-- Avoid O(n^2) or worse complexity unless required
-- Avoid repeated I/O (DB/API) inside loops
-- Avoid unnecessary memory allocations or large copies
-- Prefer efficient data structures
-- Avoid blocking operations in async/concurrent code
+## Simplicity
+- Pragmatic over clever; no speculative abstractions or premature generalization
+- Add complexity only when clearly required
 
-## Diff Control (CRITICAL)
+## Performance
+- Avoid O(n^2) or worse unless explicitly required
+- No I/O in loops
+- Avoid unnecessary allocations on hot paths
+- No blocking calls in async/concurrent paths
+
+## Security
+- No hardcoded secrets
+- Validate and sanitize external input at boundaries
+- No eval, shell interpolation, or SQL string concatenation
+- Preserve existing authentication and authorization checks
+
+## Diff Control
 - Apply minimal diffs only
-- Do not rewrite entire files if partial change is possible
-- Do not modify unrelated code
-- Do not refactor unless explicitly required
+- Do not rewrite entire files if a partial change is possible
 - Do not change formatting outside modified lines
 
-## Implementation Strategy
-- Modify only necessary files
-- Avoid large refactors
-- Reuse existing code
-- Follow existing patterns exactly
-
-## Token Efficiency (CRITICAL)
-- Do not repeat prompt content
-- Do not restate requirements
-- Avoid redundant output
-- Prefer minimal diffs over full rewrites
-
-## Testing & Validation (CRITICAL)
-- Ensure all tests pass before finishing
-- If tests fail, fix them
-- Ensure lint passes
-- Ensure typecheck passes
-- Fix failures automatically
-
-## Security (CRITICAL)
-- Do not introduce hardcoded secrets
-- Validate and sanitize all external input
-- Avoid unsafe dynamic execution (eval, shell, SQL string concat)
-- Enforce proper authentication and authorization checks
-
-## Constraints
-- Assume user is senior engineer
-- No educational explanations
-- No simplifications
+## Validation
+- Code must compile, lint, typecheck, and pass tests
+- Fix failures introduced by the change
+- If failures are pre-existing or unrelated, report instead of masking
